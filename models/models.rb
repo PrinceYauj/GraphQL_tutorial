@@ -1,0 +1,5 @@
+require_relative 'user.rb'
+require_relative 'blog.rb'
+require_relative 'post.rb'
+require_relative 'comment.rb'
+require_relative 'reaction.rb'

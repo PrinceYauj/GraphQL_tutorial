@@ -1,12 +1,16 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    graphql (1.11.5)
+    pg (1.2.3)
     sequel (5.37.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  graphql
+  pg
   sequel
 
 BUNDLED WITH
