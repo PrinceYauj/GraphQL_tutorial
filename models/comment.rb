@@ -15,8 +15,7 @@ module Byg
 
       def validate
         super
-#        validates_presence %i[text user_id]
-        validates_presence :text
+        validates_presence %i[post_id user_id text]
       end
     end
   end

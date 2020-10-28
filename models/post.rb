@@ -10,12 +10,10 @@ module Byg
       plugin :validation_helpers
       many_to_one :blog
       one_to_many :comments
-      one_to_many :reactions
 
       def validate
         super
-#        validates_presence %i[text user_id]
-        validates_presence :text
+        validates_presence %i[text blog_id]
       end
     end
   end

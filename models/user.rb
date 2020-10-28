@@ -5,7 +5,7 @@ require 'sequel'
 module Byg
   module Models
     # user model. Has many blogs
-    # Has parameters :id, :name, :email
+    # Has parameters :id, :name, :email, :karma
     class User < Sequel::Model
       EMAIL_REGEXP = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i
       unrestrict_primary_key
@@ -14,7 +14,7 @@ module Byg
       one_to_many :comments
       one_to_many :reactions
 
-      def validate
+      def validate                           # TODO refactor lambda
         super
         validates_length_range (3..100), :name
         validates_unique :name, where:(lambda do |ds, obj, cols|
@@ -24,7 +24,7 @@ module Byg
             [Sequel.function(:lower, c), v]
           end)
         end)
-        validate_format EMAIL_REGEXP, :email
+        validates_format EMAIL_REGEXP, :email
         validates_unique :email, where:(lambda do |ds, obj, cols|
           ds.where(cols.map do |c|
             v = obj.public_send(c)
@@ -33,6 +33,12 @@ module Byg
           end)
         end)
       end
+
+      def before_update
+        p self
+        super
+      end
+
     end
   end
 end
