@@ -13,9 +13,11 @@ Sequel.migration do
       CREATE UNIQUE INDEX name_idx ON users (LOWER(name));
       CREATE UNIQUE INDEX email_idx ON users (LOWER(email));
 
-      CREATE OR REPLACE FUNCTION set_zero_user_karma() RETURNS TRIGGER LANGUAGE PLPGSQL AS $$
+      CREATE OR REPLACE FUNCTION set_zero_user_karma() 
+        RETURNS TRIGGER LANGUAGE PLPGSQL AS $$
       BEGIN
-        UPDATE users SET karma = 0 WHERE id = (SELECT id FROM users ORDER BY id DESC LIMIT 1);
+        UPDATE users SET karma = 0 
+          WHERE id = (SELECT id FROM users ORDER BY id DESC LIMIT 1);
         RETURN NEW;
       END;
       $$;

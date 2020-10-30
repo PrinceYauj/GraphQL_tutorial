@@ -6,7 +6,8 @@ Sequel.migration do
     run '
       CREATE TABLE reactions (
         id SERIAL PRIMARY KEY,
-        comment_id INTEGER REFERENCES comments ON UPDATE RESTRICT ON DELETE CASCADE,
+        comment_id INTEGER REFERENCES comments
+          ON UPDATE RESTRICT ON DELETE CASCADE,
         user_id INTEGER REFERENCES users ON UPDATE RESTRICT ON DELETE CASCADE,
         CONSTRAINT unique_comment_user UNIQUE (comment_id, user_id),
         value SMALLINT CHECK (value >= -1 AND value <= 1) NOT NULL

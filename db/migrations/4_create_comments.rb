@@ -12,9 +12,11 @@ Sequel.migration do
         karma INTEGER DEFAULT 0
       );
 
-      CREATE OR REPLACE FUNCTION set_zero_comment_karma() RETURNS TRIGGER LANGUAGE plpgsql AS $$ 
+      CREATE OR REPLACE FUNCTION set_zero_comment_karma() 
+        RETURNS TRIGGER LANGUAGE plpgsql AS $$ 
       BEGIN
-        UPDATE comments SET karma = 0 WHERE id = (SELECT id FROM users ORDER BY id DESC LIMIT 1);
+        UPDATE comments SET karma = 0 
+          WHERE id = (SELECT id FROM users ORDER BY id DESC LIMIT 1);
         RETURN NEW;
       END;
       $$; 
