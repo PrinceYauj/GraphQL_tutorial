@@ -16,7 +16,7 @@ Sequel.migration do
         RETURNS TRIGGER LANGUAGE plpgsql AS $$ 
       BEGIN
         UPDATE comments SET karma = 0 
-          WHERE id = (SELECT id FROM users ORDER BY id DESC LIMIT 1);
+          WHERE id = (SELECT id FROM comments ORDER BY id DESC LIMIT 1);
         RETURN NEW;
       END;
       $$; 
