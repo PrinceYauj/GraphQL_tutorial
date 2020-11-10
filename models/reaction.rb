@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'sequel'
-
 module Byg
   module Models
     # reaction model. Belongs to the Comment. Belongs to the User. 

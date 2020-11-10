@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'sequel'
-
 module Byg
   module Models
     # blog model. Belongs to the User. Has many posts

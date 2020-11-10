@@ -8,7 +8,6 @@ module Byg
     # Has parameters :id, :name, :email, :karma
     class User < Sequel::Model
       EMAIL_REGEXP = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i
-      unrestrict_primary_key
       plugin :validation_helpers
       one_to_many :blogs
       one_to_many :comments
@@ -34,11 +33,9 @@ module Byg
         end)
       end
 
-      def before_update
-        p self
-        super
+      def posts
+        self.blogs.map(&:posts).flatten
       end
-
     end
   end
 end

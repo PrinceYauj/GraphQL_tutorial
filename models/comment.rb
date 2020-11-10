@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'sequel'
-
 module Byg
   module Models
     # comment model. Belongs to the Post. Belongs to the User. 
