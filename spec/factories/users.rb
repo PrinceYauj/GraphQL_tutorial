@@ -6,24 +6,6 @@ FactoryBot.define do
     sequence (:name)  { |n| "user#{n}" }
     sequence (:email) { |n| "user#{n}@example.com" }
     karma { 10 }
-
-    trait :with_blogs do
-      after(:create) do |user|
-        create_list(:blog, 2, user_id: user.id)
-      end
-    end
-
-    trait :with_comments do
-      after(:create) do |user|
-        create_list(:comment, 2, user_id: user.id)
-      end
-    end
-
-#    trait :with_reactions do
-#      after(:create) do |user|
-#        create_list(:reaction, 2, user_id: user.id)
-#      end
-#    end
   end
 end
 
