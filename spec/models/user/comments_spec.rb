@@ -3,11 +3,17 @@
 RSpec.describe Byg::Models::User do
   it { is_expected.to respond_to(:comments).with(0).arguments }
 
-  let!(:user) { user_with_comments(1) }
+  describe '.comments' do
+    subject(:comments) { user.comments }
 
-  it 'returns an array of Byg::Models::Comment instances' do
-    expect(user.comments).to be_an(Array)
-    expect(user.comments[0]).to be_a(Byg::Models::Comment)
+    let(:user) { user_with_comments(2) }
+
+    it { is_expected.to be_an(Array) }
+    it { is_expected.to all(be_a(Byg::Models::Comment)) }
+
+    it 'returns user\'s associated comments' do
+      expect(comments.map(&:user_id).uniq).to be == [user.id]
+    end
   end
 end
 

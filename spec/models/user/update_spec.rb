@@ -64,9 +64,8 @@ RSpec.describe Byg::Models::User do
 
     context 'with valid params' do
       let(:params) { { name: 'aaa', email: 'aaa@aaa.com', karma: 0 } }
-      it 'updates a user' do
-        update
-        expect(user2.values).to be > params
+      it 'updates a DB[:users] row' do
+        expect(update.reload.values).to be > params
       end
     end
 

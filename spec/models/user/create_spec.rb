@@ -62,7 +62,7 @@ RSpec.describe Byg::Models::User do
 
     context 'with valid params' do
       let(:params) { { name: 'aaa', email: 'a@a.com' } }
-      it 'creates a DB entry' do
+      it 'creates a DB[:blogs] row' do
         expect{ create_user }.to change{ DB[:users].count }.by(1)
       end
     end
