@@ -13,7 +13,9 @@ module Byg
 
       def validate
         super
-        validates_unique [:user_id, :comment_id]
+        validates_integer :value
+        validates_presence %i[user_id comment_id]
+        validates_unique %i[user_id comment_id]
       end
     end
   end
