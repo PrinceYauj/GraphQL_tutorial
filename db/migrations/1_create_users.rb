@@ -13,25 +13,26 @@ Sequel.migration do
       CREATE UNIQUE INDEX name_idx ON users (LOWER(name));
       CREATE UNIQUE INDEX email_idx ON users (LOWER(email));
 
-      CREATE OR REPLACE FUNCTION set_zero_user_karma() 
+      CREATE OR REPLACE FUNCTION set_zero_karma() 
         RETURNS TRIGGER LANGUAGE PLPGSQL AS $$
       BEGIN
-        UPDATE users SET karma = 0 
-          WHERE id = (SELECT id FROM users ORDER BY id DESC LIMIT 1);
+        RAISE NOTICE \'input row: (%)\', NEW;
+        NEW.karma = 0;
+        RAISE NOTICE \'final row: (%)\', NEW;
         RETURN NEW;
       END;
       $$;
 
       CREATE TRIGGER user_karma
-        AFTER INSERT ON users FOR EACH ROW
-        EXECUTE PROCEDURE set_zero_user_karma();
+        BEFORE INSERT ON users FOR EACH ROW
+        EXECUTE PROCEDURE set_zero_karma();
     '
   end
 
   down do
     run '
       DROP TRIGGER user_karma ON users;
-      DROP FUNCTION set_zero_user_karma();
+      DROP FUNCTION set_zero_karma();
       DROP TABLE users;
     '
   end
