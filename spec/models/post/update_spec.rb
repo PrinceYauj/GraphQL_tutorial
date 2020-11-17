@@ -16,10 +16,10 @@ RSpec.describe Byg::Models::Post do
       end
     end
 
-    context 'with invalid blog_id' do
-      let(:params) { { blog_id: -1 } }
-      it 'raises Sequel::ForeignKeyConstraintViolation error' do
-        expect{ update }.to raise_error(Sequel::ForeignKeyConstraintViolation)
+    context 'with blog_id' do
+      let(:params) { { blog_id: 100 } }
+      it 'raises Sequel::DatabaseError' do
+        expect{ update }.to raise_error(Sequel::DatabaseError)
       end
     end
 
@@ -37,11 +37,8 @@ RSpec.describe Byg::Models::Post do
       end
     end
 
-    #TODO forbid blog_id updates
-
     context 'with valid params' do
-      let(:blog2) { create(:blog) }
-      let(:params) { { text: 'new text', blog_id: blog2.id } }
+      let(:params) { { text: 'new text' } }
       it 'updates a DB[:posts] row' do
         expect(update.reload.values).to be > params
       end

@@ -32,17 +32,17 @@ RSpec.describe Byg::Models::Reaction do
       end
     end
 
-    context 'with invalid comment_id' do
-      let(:params) { { comment_id: -1 } }
-      it 'raises Sequel::ForeignKeyConstraintViolation error' do
-        expect{ update }.to raise_error(Sequel::ForeignKeyConstraintViolation)
+    context 'with comment_id' do
+      let(:params) { { comment_id: 100 } }
+      it 'raises Sequel::DatabaseError' do
+        expect{ update }.to raise_error(Sequel::DatabaseError)
       end
     end
 
-    context 'with invalid user_id' do
-      let(:params) { { user_id: -1 } }
-      it 'raises Sequel::ForeignKeyConstraintViolation error' do
-        expect{ update }.to raise_error(Sequel::ForeignKeyConstraintViolation)
+    context 'with user_id' do
+      let(:params) { { user_id: 100 } }
+      it 'raises Sequel::DatabaseError' do
+        expect{ update }.to raise_error(Sequel::DatabaseError)
       end
     end
 
@@ -60,12 +60,8 @@ RSpec.describe Byg::Models::Reaction do
       end
     end
 
-    #TODO forbid user_id and comment_id updates
-
     context 'with valid params' do
-      let(:user2) { user_with_comments }
-      let(:params) { { user_id: user2.id, comment_id: user2.comments[0].id,
-                       value: -1 } }
+      let(:params) { { value: 0 } }
       it 'updates a DB[:comments] row' do
         expect(update.reload.values).to be > params
       end
