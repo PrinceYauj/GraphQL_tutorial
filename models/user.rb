@@ -6,6 +6,8 @@ module Byg
   module Models
     # user model. Has many blogs
     # Has parameters :id, :name, :email, :karma
+    # :karma is set to 0 on create with DB trigger user_karma
+    # :name and :email must be unique separately
     class User < Sequel::Model
       EMAIL_REGEXP = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i
       plugin :validation_helpers

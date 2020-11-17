@@ -4,6 +4,7 @@ module Byg
   module Models
     # blog model. Belongs to the User. Has many posts
     # Has parameters :id, :user_id, :name
+    # :user_id updates are forbidden with DB trigger blog_fk
     class Blog < Sequel::Model
       plugin :validation_helpers
       many_to_one :user

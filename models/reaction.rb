@@ -6,6 +6,7 @@ module Byg
     # Has parameters :id, :comment_id, :user_id, :value
     # A pair [comment_id, user_id] must be unique
     # :value can be -1, 0 or 1, implemented with check DB constraint
+    # :comment_id, :user_id updates are forbidden with DB trigger reaction_fk
     class Reaction < Sequel::Model
       plugin :validation_helpers
       many_to_one :user
