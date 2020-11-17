@@ -25,7 +25,7 @@ Sequel.migration do
 
       CREATE TRIGGER user_karma
         BEFORE INSERT ON users FOR EACH ROW
-        EXECUTE PROCEDURE set_zero_karma();
+        EXECUTE FUNCTION set_zero_karma();
     '
   end
 
@@ -36,20 +36,4 @@ Sequel.migration do
       DROP TABLE users;
     '
   end
-
 end
-
-=begin
-Sequel.migration do
-  change do
-    create_table(:users) do
-      primary_key :id
-      String :name
-      index :name, unique: true
-      String :email
-      index :email, unique: true
-      Integer :karma, default: 0
-    end
-  end
-end
-=end

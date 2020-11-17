@@ -9,25 +9,25 @@ Sequel.migration do
         user_id INTEGER REFERENCES users ON UPDATE RESTRICT ON DELETE CASCADE,
         name TEXT
       );
+
+      CREATE OR REPLACE FUNCTION forbid_fk_update()
+        RETURNS TRIGGER LANGUAGE PLPGSQL AS $$
+      BEGIN
+        RAISE EXCEPTION \'attempt to update FK on table: (%)\', TG_TABLE_NAME;
+      END;
+      $$;
+
+      CREATE TRIGGER blog_fk
+        BEFORE UPDATE OF user_id ON blogs
+        EXECUTE FUNCTION forbid_fk_update()
     '
   end
 
   down do
-    run 'DROP TABLE blogs;'
-  end
-
-end
-
-=begin
-
-Sequel.migration do
-  change do
-    create_table(:blogs) do
-      primary_key :id
-      foreign_key :user_id, :users, on_update: :restrict, on_delete: :cascade
-      String :name
-    end
+    run '
+      DROP TRIGGER blog_fk ON blogs;
+      DROP FUNCTION forbid_fk_updates();
+      DROP TABLE blogs;
+    '
   end
 end
-
-=end

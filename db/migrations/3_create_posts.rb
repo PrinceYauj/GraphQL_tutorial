@@ -9,26 +9,17 @@ Sequel.migration do
         blog_id INTEGER REFERENCES blogs ON UPDATE RESTRICT ON DELETE CASCADE,
         text TEXT
       );
+
+      CREATE TRIGGER post_fk
+        BEFORE UPDATE OF blog_id ON posts
+        EXECUTE FUNCTION forbid_fk_update()
     '
   end
 
   down do
-    run 'DROP TABLE posts;'
-  end
-
-end
-
-
-=begin
-
-Sequel.migration do
-  change do
-    create_table(:posts) do
-      primary_key :id
-      foreign_key :blog_id, :blogs, on_update: :restrict, on_delete: :cascade
-      String :text
-    end
+    run '
+      DROP TRIGGER post_fk ON posts;
+      DROP TABLE posts;
+    '
   end
 end
-
-=end

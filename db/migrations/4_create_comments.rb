@@ -14,32 +14,19 @@ Sequel.migration do
 
       CREATE TRIGGER comment_karma 
         BEFORE INSERT ON comments FOR EACH ROW
-        EXECUTE PROCEDURE set_zero_karma();
+        EXECUTE FUNCTION set_zero_karma();
+
+      CREATE TRIGGER comment_fk
+        BEFORE UPDATE OF post_id, user_id ON comments
+        EXECUTE FUNCTION forbid_fk_update()
     '
   end
 
   down do
     run '
+      DROP TRIGGER comment_fk ON comments;
       DROP TRIGGER comment_karma ON comments;
-      DROP FUNCTION set_zero_karma();
       DROP TABLE comments;
     '
   end
-
 end
-
-=begin
-
-Sequel.migration do
-  change do
-    create_table(:comments) do
-      primary_key :id
-      foreign_key :post_id, :posts, on_update: :restrict, on_delete: :cascade
-      foreign_key :user_id, :users, on_update: :restrict, on_delete: :cascade
-      String :text
-      Integer :karma
-    end
-  end
-end
-
-=end
