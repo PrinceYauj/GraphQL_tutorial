@@ -16,8 +16,8 @@ p Byg::Models::Blog.create(user_id: 3,\
 p Byg::Models::Post.create(blog_id: 1,\
   text: 'Влияние диоксида циркония на свойства керамики')
 p Byg::Models::Post.create(blog_id: 2,\
-  text: 'The Lebesgue integral extends the integral to a larger class of\
-  functions')
+  text: 'The Lebesgue integral extends the integral to a larger class of'\
+  ' functions')
 p Byg::Models::Post.create(blog_id: 3,\
   text: 'Unsymmetrical dimethylhydrazine is highly toxic')
 p Byg::Models::Post.create(blog_id: 4,\
