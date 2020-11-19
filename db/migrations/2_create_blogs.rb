@@ -10,7 +10,7 @@ Sequel.migration do
         name TEXT
       );
 
-      CREATE OR REPLACE FUNCTION forbid_fk_update()
+      CREATE FUNCTION forbid_fk_update()
         RETURNS TRIGGER LANGUAGE PLPGSQL AS $$
       BEGIN
         RAISE EXCEPTION \'attempt to update FK on table: (%)\', TG_TABLE_NAME;
@@ -26,7 +26,7 @@ Sequel.migration do
   down do
     run '
       DROP TRIGGER blog_fk ON blogs;
-      DROP FUNCTION forbid_fk_updates();
+      DROP FUNCTION forbid_fk_update();
       DROP TABLE blogs;
     '
   end
