@@ -16,4 +16,3 @@ RSpec.describe Byg::Models::Blog do
     end
   end
 end
-

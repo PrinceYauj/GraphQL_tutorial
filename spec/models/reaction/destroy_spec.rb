@@ -9,8 +9,7 @@ RSpec.describe Byg::Models::Reaction do
     let!(:reaction) { create(:reaction) }
 
     it 'destroys the reaction instance' do
-      expect{ destroy }.to change{ described_class[reaction.id] }.to(nil)
+      expect { destroy }.to change { described_class[reaction.id] }.to(nil)
     end
   end
 end
-

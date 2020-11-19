@@ -2,9 +2,10 @@
 
 module Byg
   module Types
+    # GraphQL post type
     class Post < GraphQL::Schema::Object
       description 'Posts'
-      require_relative 'comment_type.rb'
+      require_relative 'comment_type'
       field :id, ID, null: false
       field :blog, Blog, null: false
       field :text, String, null: false

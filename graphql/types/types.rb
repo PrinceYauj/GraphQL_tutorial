@@ -1,6 +1,8 @@
-require_relative 'user_type.rb'
-require_relative 'blog_type.rb'
-require_relative 'post_type.rb'
-require_relative 'comment_type.rb'
-require_relative 'reaction_type.rb'
-require_relative 'query_type.rb'
+# frozen_string_literal: true
+
+require_relative 'user_type'
+require_relative 'blog_type'
+require_relative 'post_type'
+require_relative 'comment_type'
+require_relative 'reaction_type'
+require_relative 'query_type'

@@ -12,4 +12,3 @@ RSpec.describe Byg::Models::Post do
     it { expect(blog.id).to be == (post.blog_id) }
   end
 end
-

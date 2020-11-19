@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 Sequel.migration do
-
-  up do 
+  up do
     run '
       CREATE TABLE reactions (
         id SERIAL PRIMARY KEY,

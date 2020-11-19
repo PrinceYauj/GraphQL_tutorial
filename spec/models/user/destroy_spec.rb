@@ -14,11 +14,11 @@ RSpec.describe Byg::Models::User do
       let!(:user) { user_with_blogs(2) }
 
       it 'destroys the user instance' do
-        expect{ destroy }.to change{ described_class[user.id] }.to(nil)
+        expect { destroy }.to change { described_class[user.id] }.to(nil)
       end
 
       it 'destroys user\'s blogs' do
-        expect{ destroy }.to change{ DB[:blogs].count }.from(2).to(0)
+        expect { destroy }.to change { DB[:blogs].count }.from(2).to(0)
       end
     end
 
@@ -26,11 +26,11 @@ RSpec.describe Byg::Models::User do
       let!(:user) { user_with_comments(2) }
 
       it 'destroys the user instance' do
-        expect{ destroy }.to change{ described_class[user.id] }.to(nil)
+        expect { destroy }.to change { described_class[user.id] }.to(nil)
       end
 
       it 'destroys user\'s comments' do
-        expect{ destroy }.to change{ DB[:comments].count }.from(2).to(0)
+        expect { destroy }.to change { DB[:comments].count }.from(2).to(0)
       end
     end
 
@@ -38,13 +38,12 @@ RSpec.describe Byg::Models::User do
       let!(:user) { user_with_reactions(3) }
 
       it 'destroys the user instance' do
-        expect{ destroy }.to change{ described_class[user.id] }.to(nil)
+        expect { destroy }.to change { described_class[user.id] }.to(nil)
       end
 
       it 'destroys user\'s reactions' do
-        expect{ destroy }.to change{ DB[:reactions].count }.from(3).to(0)
+        expect { destroy }.to change { DB[:reactions].count }.from(3).to(0)
       end
     end
   end
 end
-

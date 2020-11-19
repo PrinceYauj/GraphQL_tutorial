@@ -2,6 +2,7 @@
 
 module Byg
   module Types
+    # NODOC
     class QueryType < GraphQL::Schema::Object
       description 'the query root of a schema'
       field :user, User, null: true do

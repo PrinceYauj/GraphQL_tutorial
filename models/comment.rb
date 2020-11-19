@@ -2,7 +2,7 @@
 
 module Byg
   module Models
-    # comment model. Belongs to the Post. Belongs to the User. 
+    # comment model. Belongs to the Post. Belongs to the User.
     # Has many reactions.
     # Has parameters :id, :post_id, user_id, :text, :karma
     # :post_id, :user_id updates are forbidden with DB trigger comment_fk

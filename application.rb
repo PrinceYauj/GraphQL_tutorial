@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require_relative 'requirements.rb'
+require_relative 'requirements'
 
+# NODOC
 class Schema < GraphQL::Schema
   query Byg::Types::QueryType
 end

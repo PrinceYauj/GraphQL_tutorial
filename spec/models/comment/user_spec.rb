@@ -12,4 +12,3 @@ RSpec.describe Byg::Models::Comment do
     it { expect(user.id).to be == (comment.user_id) }
   end
 end
-

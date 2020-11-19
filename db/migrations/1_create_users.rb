@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 Sequel.migration do
-
-  up do 
+  up do
     run '
       CREATE TABLE users (
         id SERIAL PRIMARY KEY,
@@ -13,7 +12,7 @@ Sequel.migration do
       CREATE UNIQUE INDEX name_idx ON users (LOWER(name));
       CREATE UNIQUE INDEX email_idx ON users (LOWER(email));
 
-      CREATE FUNCTION set_zero_karma() 
+      CREATE FUNCTION set_zero_karma()
         RETURNS TRIGGER LANGUAGE PLPGSQL AS $$
       BEGIN
         RAISE NOTICE \'input row: (%)\', NEW;

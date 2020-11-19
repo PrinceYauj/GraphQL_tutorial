@@ -12,4 +12,3 @@ RSpec.describe Byg::Models::Reaction do
     it { expect(user.id).to be == (reaction.user_id) }
   end
 end
-

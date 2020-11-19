@@ -1,0 +1,32 @@
+---
+AllCops:
+  TargetRubyVersion: 2.6
+
+AllCops:
+  NewCops: enable
+
+require:
+  - rubocop-rspec
+
+Metrics/BlockLength:
+  Exclude:
+    - db/migrations/*
+    - spec/**/*
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+RSpec/FilePath:
+  Enabled: false

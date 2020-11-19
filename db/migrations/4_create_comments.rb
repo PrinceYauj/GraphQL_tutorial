@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 Sequel.migration do
-
-  up do 
+  up do
     run '
       CREATE TABLE comments (
         id SERIAL PRIMARY KEY,
@@ -12,7 +11,7 @@ Sequel.migration do
         karma INTEGER DEFAULT 0
       );
 
-      CREATE TRIGGER comment_karma 
+      CREATE TRIGGER comment_karma
         BEFORE INSERT ON comments FOR EACH ROW
         EXECUTE FUNCTION set_zero_karma();
 

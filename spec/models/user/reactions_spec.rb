@@ -16,4 +16,3 @@ RSpec.describe Byg::Models::User do
     end
   end
 end
-

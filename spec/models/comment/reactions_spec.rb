@@ -16,4 +16,3 @@ RSpec.describe Byg::Models::Comment do
     end
   end
 end
-

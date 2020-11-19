@@ -10,10 +10,10 @@ FactoryBot.define do
     trait :with_reactions do
       after(:create) do |comment|
         user2 = create(:user)
-        create(:reaction, user_id: create(:user).id, 
-               comment_id: comment.id, value: 1)
-        create(:reaction, user_id: user2.id, 
-               comment_id: comment.id, value: 1)
+        create(:reaction, user_id: create(:user).id,
+                          comment_id: comment.id, value: 1)
+        create(:reaction, user_id: user2.id,
+                          comment_id: comment.id, value: 1)
       end
     end
   end

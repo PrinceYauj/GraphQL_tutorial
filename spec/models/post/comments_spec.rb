@@ -16,4 +16,3 @@ RSpec.describe Byg::Models::Post do
     end
   end
 end
-

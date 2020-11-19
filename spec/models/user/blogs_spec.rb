@@ -2,7 +2,7 @@
 
 RSpec.describe Byg::Models::User do
   it { is_expected.to respond_to(:blogs).with(0).arguments }
- 
+
   describe '.blogs' do
     subject(:blogs) { user.blogs }
 

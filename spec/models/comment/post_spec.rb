@@ -12,4 +12,3 @@ RSpec.describe Byg::Models::Comment do
     it { expect(post.id).to be == (comment.post_id) }
   end
 end
-

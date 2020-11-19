@@ -3,8 +3,8 @@
 FactoryBot.define do
   factory :user, class: 'Byg::Models::User' do
     sequence :id
-    sequence (:name)  { |n| "user#{n}" }
-    sequence (:email) { |n| "user#{n}@example.com" }
+    sequence(:name)  { |n| "user#{n}" }
+    sequence(:email) { |n| "user#{n}@example.com" }
     karma { 10 }
   end
 end
@@ -26,7 +26,7 @@ def user_with_comments(comments_count = 1, posts_count = 1, blogs_count = 1)
   user = user_with_posts(posts_count, blogs_count)
   posts = user.posts
   FactoryBot.create_list(:comment, comments_count, user_id: user.id,
-    post_id: posts[0].id)
+                                                   post_id: posts[0].id)
   user
 end
 

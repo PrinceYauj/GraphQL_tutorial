@@ -2,6 +2,7 @@
 
 module Byg
   module Types
+    # GraphQL reaction type
     class Reaction < GraphQL::Schema::Object
       description 'Reactions'
       field :id, ID, null: false
