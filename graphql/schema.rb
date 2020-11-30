@@ -6,7 +6,8 @@ module Byg
     query Byg::Types::QueryType
     mutation Byg::Types::MutationType
     use GraphQL::Execution::Errors
-    rescue_from(StandardError){|e| p e.inspect}
+    rescue_from(StandardError) do |e|
+      raise GraphQL::ExecutionError, "#{e}"
+    end
   end
 end
-
