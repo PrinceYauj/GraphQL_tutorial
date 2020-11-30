@@ -2,12 +2,7 @@
 
 RSpec::Matchers.define_negated_matcher :not_change, :change
 
-require 'sequel'
-require 'factory_bot'
-DB = Sequel.connect('postgres://rails:3@localhost:5432/testdb')
-require_relative '/vagrant/app/models/models'
-require_relative '/vagrant/app/spec/support/database_cleaner'
-require_relative '/vagrant/app/spec/factories/sequel_support'
+require_relative 'spec_requirements'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -19,6 +14,10 @@ RSpec.configure do |config|
   config.before(:suite) do
     FactoryBot.definition_file_paths = ['/vagrant/app/spec/factories/']
     FactoryBot.find_definitions
+  end
+
+  config.before do
+    FactoryBot.rewind_sequences
   end
 
   config.mock_with :rspec do |mocks|
