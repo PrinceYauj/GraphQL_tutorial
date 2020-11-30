@@ -40,5 +40,5 @@ p Byg::Models::Reaction.create(user_id: 2, comment_id: 2, value: -1)
 p Byg::Models::Reaction.create(user_id: 3, comment_id: 2, value: -1)
 
 # 10.times { |i| Byg::Models::User.create(name: "USER#{i}", email: "EMAIL#{i}@a.uk") }
-# 10.times { |i| Byg::Models::Reaction.create(user_id: 4 + i, comment_id: 1, value: [-1, 1].sample) }
-# 10.times { |i| Byg::Models::Reaction.create(user_id: 4 + i, comment_id: 2, value: [-1, 1].sample) }
+# 10.times { |i| Byg::Models::Reaction.create(user_id: 4 + i, comment_id: 1, value: [-1, -1, 1].sample) }
+# 10.times { |i| Byg::Models::Reaction.create(user_id: 4 + i, comment_id: 2, value: [-1, 1, 1].sample) }

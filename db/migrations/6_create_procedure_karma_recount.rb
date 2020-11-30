@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# TODO make procedures print updates
+
 Sequel.migration do
   up do
     run '
