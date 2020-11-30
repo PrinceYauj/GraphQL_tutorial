@@ -37,7 +37,7 @@ RSpec.describe Byg::Models::Reaction do
     end
 
     context 'with comment_id' do
-      let(:params) { { comment_id: 100 } }
+      let(:params) { { comment_id: -1 } }
 
       it 'raises Sequel::DatabaseError' do
         expect { update }.to raise_error(Sequel::DatabaseError)
@@ -45,7 +45,7 @@ RSpec.describe Byg::Models::Reaction do
     end
 
     context 'with user_id' do
-      let(:params) { { user_id: 100 } }
+      let(:params) { { user_id: -1 } }
 
       it 'raises Sequel::DatabaseError' do
         expect { update }.to raise_error(Sequel::DatabaseError)

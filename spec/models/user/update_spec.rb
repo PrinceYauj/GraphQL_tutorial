@@ -9,10 +9,6 @@ RSpec.describe Byg::Models::User do
     let!(:user1) { create(:user) }
     let!(:user2) { create(:user) }
 
-    before do
-      FactoryBot.rewind_sequences
-    end
-
     context 'with name not unique' do
       let(:params) { { name: user1.name } }
 

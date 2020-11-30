@@ -18,7 +18,7 @@ RSpec.describe Byg::Models::Post do
     end
 
     context 'with blog_id' do
-      let(:params) { { blog_id: 100 } }
+      let(:params) { { blog_id: -1 } }
 
       it 'raises Sequel::DatabaseError' do
         expect { update }.to raise_error(Sequel::DatabaseError)
