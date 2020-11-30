@@ -5,13 +5,13 @@ module Byg
     # NODOC
     class CreatePost < GraphQL::Schema::Mutation
 
-      argument :text, String, required: true
       argument :blog_id, Integer, required: true
+      argument :text, String, required: true
 
       type Byg::Types::Post
 
-      def resolve(text:, blog_id:)
-        Byg::Models::Post.create(text: text, blog_id: blog_id)
+      def resolve(blog_id:, text:)
+        Byg::Models::Post.create(blog_id: blog_id, text: text)
       end
     end
   end

@@ -3,18 +3,18 @@
 module Byg
   module Mutations
     # NODOC
-    class BaseDestroy < GraphQL::Schema::Resolver
+    class BaseDestroy < GraphQL::Schema::Mutation
 
-      argument :id, ID, required: true
+      argument :id, Integer, required: true
 
       def self.inherited(subclass)
         caller_model = get_model(subclass)
-        subclass.type Byg::Types::Post, null: true
+        subclass.type Byg::Types.const_get(caller_model)
       end
 
       def resolve(id:)
         model = self.class.get_model(self.class)
-        Byg::Models.const_get(model)[id]&.destroy
+        Byg::Models.const_get(model).with_pk!(id).destroy
       end
 
       private

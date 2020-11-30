@@ -5,12 +5,13 @@ module Byg
     # NODOC
     class UpdatePost < GraphQL::Schema::Mutation
 
-      argument :text, String, required: true
+      argument :id, Integer, required: true
+      argument :text, String, required: false
 
       type Byg::Types::Post
 
-      def resolve(text:)
-        Byg::Models::Post.update(text: text)
+      def resolve(id:, text:)
+        Byg::Models::Post.with_pk!(id).update(text: text)
       end
     end
   end

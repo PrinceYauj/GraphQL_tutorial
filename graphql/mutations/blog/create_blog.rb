@@ -5,7 +5,7 @@ module Byg
     # NODOC
     class CreateBlog < GraphQL::Schema::Mutation
 
-      argument :user_id, ID, required: true
+      argument :user_id, Integer, required: true
       argument :name, String, required: true
 
       type Byg::Types::Blog

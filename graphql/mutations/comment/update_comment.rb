@@ -5,12 +5,13 @@ module Byg
     # NODOC
     class UpdateComment < GraphQL::Schema::Mutation
 
-      argument :text, String, required: true
+      argument :id, Integer, required: true
+      argument :text, String, required: false
 
       type Byg::Types::Comment
 
-      def resolve(text:)
-        Byg::Models::Comment.update(text: text)
+      def resolve(id:, text:)
+        Byg::Models::Comment.with_pk!(id).update(text: text)
       end
     end
   end

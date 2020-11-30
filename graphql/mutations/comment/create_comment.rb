@@ -5,14 +5,15 @@ module Byg
     # NODOC
     class CreateComment < GraphQL::Schema::Mutation
 
-      argument :text, String, required: true
-      argument :post_id, Integer, required: true
       argument :user_id, Integer, required: true
+      argument :post_id, Integer, required: true
+      argument :text, String, required: true
+
 
       type Byg::Types::Comment
 
-      def resolve(text:, post_id:, user_id:)
-        params = { text: text, post_id: post_id, user_id: user_id }
+      def resolve(user_id:, post_id:, text:)
+        params = { user_id: user_id, post_id: post_id, text: text }
         Byg::Models::Comment.create(params)
       end
     end

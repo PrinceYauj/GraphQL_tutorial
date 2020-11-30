@@ -5,13 +5,14 @@ module Byg
     # NODOC
     class UpdateUser < GraphQL::Schema::Mutation
 
+      argument :id, Integer, required: true
       argument :name, String, required: false
       argument :email, String, required: false
 
       type Byg::Types::User
 
-      def resolve(name:, email:)
-        Byg::Models::User.update(name: name, email: email)
+      def resolve(id:, name:, email:)
+        Byg::Models::User.with_pk!(id).update(name: name, email: email)
       end
     end
   end

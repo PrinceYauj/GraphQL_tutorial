@@ -5,12 +5,13 @@ module Byg
     # NODOC
     class UpdateReaction < GraphQL::Schema::Mutation
 
-      argument :value, Integer, required: true
+      argument :id, Integer, required: true
+      argument :value, Integer, required: false
 
       type Byg::Types::Reaction
 
-      def resolve(value:)
-        Byg::Models::Reaction.update(value: value)
+      def resolve(id:, value:)
+        Byg::Models::Reaction.with_pk!(id).update(value: value)
       end
     end
   end
