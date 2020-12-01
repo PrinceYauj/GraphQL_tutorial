@@ -10,5 +10,5 @@ RSpec.shared_context 'graphql' do
   let(:params) { { object: nil, context: {}, field: nil } }
   let(:errors) { execute.to_h['errors'] }
   let(:execute) { Byg::Schema.execute(mutation_string) }
-  let(:mutation_string) { generate_mutation(described_class, args) }
+  let(:mutation_string) { generate_mutation(described_class, to_camel(args)) }
 end

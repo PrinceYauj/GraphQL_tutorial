@@ -15,11 +15,11 @@ module Byg
       "mutation { #{class_name(klass)} ( #{hash_to_str(hash)} ) { id } }"
     end
 
-    # def to_camel(hash)
-    #  hash.transform_keys! do |k|
-    #    k.to_s.gsub(/_./) { |m| m[-1].upcase! }.to_sym
-    #  end
-    # end
+    def to_camel(hash)
+      hash.transform_keys! do |k|
+        k.to_s.gsub(/_./) { |m| m[-1].upcase! }.to_sym
+      end
+    end
 
     def to_snake(hash)
       hash.transform_keys do |k|
