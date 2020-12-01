@@ -4,7 +4,6 @@ module Byg
   module Mutations
     # NODOC
     class UpdateBlog < GraphQL::Schema::Mutation
-
       argument :id, Integer, required: true
       argument :name, String, required: false
 

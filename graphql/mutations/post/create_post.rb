@@ -4,7 +4,6 @@ module Byg
   module Mutations
     # NODOC
     class CreatePost < GraphQL::Schema::Mutation
-
       argument :blog_id, Integer, required: true
       argument :text, String, required: true
 

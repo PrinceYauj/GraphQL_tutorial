@@ -4,7 +4,6 @@ module Byg
   module Mutations
     # NODOC
     class UpdateUser < GraphQL::Schema::Mutation
-
       argument :id, Integer, required: true
       argument :name, String, required: false
       argument :email, String, required: false

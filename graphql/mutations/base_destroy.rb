@@ -4,7 +4,6 @@ module Byg
   module Mutations
     # NODOC
     class BaseDestroy < GraphQL::Schema::Mutation
-
       argument :id, Integer, required: true
 
       def self.inherited(subclass)
@@ -16,8 +15,6 @@ module Byg
         model = self.class.get_model(self.class)
         Byg::Models.const_get(model).with_pk!(id).destroy
       end
-
-      private
 
       def self.get_model(klass)
         klass.name.sub('Byg::Mutations::Destroy', '')

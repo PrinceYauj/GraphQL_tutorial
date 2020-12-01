@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sequel'
 require 'graphql'
 require 'factory_bot'

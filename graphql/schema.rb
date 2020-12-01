@@ -7,7 +7,7 @@ module Byg
     mutation Byg::Types::MutationType
     use GraphQL::Execution::Errors
     rescue_from(StandardError) do |e|
-      raise GraphQL::ExecutionError, "#{e}"
+      raise GraphQL::ExecutionError, e.to_s
     end
   end
 end

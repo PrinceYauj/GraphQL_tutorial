@@ -4,7 +4,6 @@ module Byg
   module Mutations
     # NODOC
     class CreateUser < GraphQL::Schema::Mutation
-
       argument :name, String, required: true
       argument :email, String, required: true
 
@@ -16,4 +15,3 @@ module Byg
     end
   end
 end
-

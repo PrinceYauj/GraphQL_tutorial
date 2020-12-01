@@ -4,7 +4,6 @@ module Byg
   module Mutations
     # NODOC
     class UpdateComment < GraphQL::Schema::Mutation
-
       argument :id, Integer, required: true
       argument :text, String, required: false
 

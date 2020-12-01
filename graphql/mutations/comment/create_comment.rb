@@ -4,11 +4,9 @@ module Byg
   module Mutations
     # NODOC
     class CreateComment < GraphQL::Schema::Mutation
-
       argument :user_id, Integer, required: true
       argument :post_id, Integer, required: true
       argument :text, String, required: true
-
 
       type Byg::Types::Comment
 

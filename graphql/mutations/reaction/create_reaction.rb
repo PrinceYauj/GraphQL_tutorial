@@ -4,7 +4,6 @@ module Byg
   module Mutations
     # NODOC
     class CreateReaction < GraphQL::Schema::Mutation
-
       argument :user_id, Integer, required: true
       argument :comment_id, Integer, required: true
       argument :value, Integer, required: true

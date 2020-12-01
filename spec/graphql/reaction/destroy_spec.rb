@@ -27,7 +27,7 @@ RSpec.describe Byg::Mutations::DestroyReaction do
     let(:args) { { id: -1 } }
 
     it 'returns Sequel::NoMatchingRow error' do
-      expect(errors[0]['message']).to eql("Sequel::NoMatchingRow")
+      expect(errors[0]['message']).to eql('Sequel::NoMatchingRow')
     end
   end
 end

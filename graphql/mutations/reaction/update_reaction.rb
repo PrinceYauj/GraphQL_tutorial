@@ -4,7 +4,6 @@ module Byg
   module Mutations
     # NODOC
     class UpdateReaction < GraphQL::Schema::Mutation
-
       argument :id, Integer, required: true
       argument :value, Integer, required: false
 

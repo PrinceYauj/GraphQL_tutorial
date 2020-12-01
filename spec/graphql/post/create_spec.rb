@@ -19,7 +19,7 @@ RSpec.describe Byg::Mutations::CreatePost do
 
     it 'returns 1 gql error' do
       expect(errors.count).to be == 1
-      expect(errors[0]['message']).to include("Argument 'blogId' on Field" +
+      expect(errors[0]['message']).to include("Argument 'blogId' on Field" \
         " 'createPost' has an invalid value (\"\"). Expected type 'Int!'")
     end
   end
@@ -29,13 +29,13 @@ RSpec.describe Byg::Mutations::CreatePost do
 
     it 'returns 1 gql error' do
       expect(errors.count).to be == 1
-      expect(errors[0]['message']).to include("Argument 'text' on Field" +
+      expect(errors[0]['message']).to include("Argument 'text' on Field" \
         " 'createPost' has an invalid value (1). Expected type 'String!'")
     end
   end
 
   context 'with invalid arguments' do
-    let(:args) { { blogId: '', text: 1  } }
+    let(:args) { { blogId: '', text: 1 } }
 
     it 'returns 2 gql errors' do
       expect(errors.count).to be == 2
@@ -47,8 +47,8 @@ RSpec.describe Byg::Mutations::CreatePost do
 
     it 'returns 1 gql errors' do
       expect(errors.count).to be == 1
-      expect(errors[0]['message']).to include("Field 'createPost' is" +
-        " missing required arguments: blogId")
+      expect(errors[0]['message']).to include("Field 'createPost' is" \
+        ' missing required arguments: blogId')
     end
   end
 
@@ -57,20 +57,19 @@ RSpec.describe Byg::Mutations::CreatePost do
 
     it 'returns parsing error' do
       expect(errors.count).to be == 1
-      expect(errors[0]['message']).to include("Parse error")
+      expect(errors[0]['message']).to include('Parse error')
     end
   end
 
   context 'with non-existent argument' do
-    let(:args) { { non_existent_arg: 'any'  } }
+    let(:args) { { non_existent_arg: 'any' } }
 
     it 'returns 2 gql errors' do
       expect(errors.count).to be == 2
-      expect(errors[0]['message']).to include("Field 'createPost' is" +
-        " missing required arguments: blogId, text")
-      expect(errors[1]['message']).to include("Field 'createPost' doesn't" +
+      expect(errors[0]['message']).to include("Field 'createPost' is" \
+        ' missing required arguments: blogId, text')
+      expect(errors[1]['message']).to include("Field 'createPost' doesn't" \
         " accept argument 'non_existent_arg'")
     end
   end
 end
-

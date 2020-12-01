@@ -11,4 +11,3 @@ create_string = 'mutation {
 }'
 
 p Byg::Schema.execute(create_string)
-
