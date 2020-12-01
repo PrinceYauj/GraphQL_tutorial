@@ -9,8 +9,9 @@ module Byg
 
       type Byg::Types::Comment
 
-      def resolve(id:, text:)
-        Byg::Models::Comment.with_pk!(id).update(text: text)
+      def resolve(id:, text: nil)
+        args = { text: text }.delete_if { |_, v| v.nil? }
+        Byg::Models::Comment.with_pk!(id).update(args)
       end
     end
   end

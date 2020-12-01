@@ -9,8 +9,9 @@ module Byg
 
       type Byg::Types::Blog
 
-      def resolve(id:, name:)
-        Byg::Models::Blog.with_pk!(id).update(name: name)
+      def resolve(id:, name: nil)
+        args = { name: name }.delete_if { |_, v| v.nil? }
+        Byg::Models::Blog.with_pk!(id).update(args)
       end
     end
   end
