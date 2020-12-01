@@ -69,7 +69,7 @@ RSpec.describe Byg::Mutations::CreateBlog do
       expect(errors[0]['message']).to include("Field 'createBlog' is" \
         ' missing required arguments: userId, name')
       expect(errors[1]['message']).to include("Field 'createBlog' doesn't" \
-        " accept argument 'non_existent_arg'")
+        " accept argument 'nonExistentArg'")
     end
   end
 end

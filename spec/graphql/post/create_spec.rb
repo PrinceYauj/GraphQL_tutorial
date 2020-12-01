@@ -62,14 +62,14 @@ RSpec.describe Byg::Mutations::CreatePost do
   end
 
   context 'with non-existent argument' do
-    let(:args) { { non_existent_arg: 'any' } }
+    let(:args) { { nonExistentArg: 'any' } }
 
     it 'returns 2 gql errors' do
       expect(errors.count).to be == 2
       expect(errors[0]['message']).to include("Field 'createPost' is" \
         ' missing required arguments: blogId, text')
       expect(errors[1]['message']).to include("Field 'createPost' doesn't" \
-        " accept argument 'non_existent_arg'")
+        " accept argument 'nonExistentArg'")
     end
   end
 end

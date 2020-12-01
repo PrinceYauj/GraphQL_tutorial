@@ -72,14 +72,14 @@ RSpec.describe Byg::Mutations::CreateReaction do
   end
 
   context 'with non-existent argument' do
-    let(:args) { { non_existent_arg: 'any' } }
+    let(:args) { { nonExistentArg: 'any' } }
 
     it 'returns 2 gql errors' do
       expect(errors.count).to be == 2
       expect(errors[0]['message']).to include("Field 'createReaction' is" \
         ' missing required arguments: userId, commentId, value')
       expect(errors[1]['message']).to include("Field 'createReaction' doesn't" \
-        " accept argument 'non_existent_arg'")
+        " accept argument 'nonExistentArg'")
     end
   end
 end

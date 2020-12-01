@@ -79,7 +79,7 @@ RSpec.describe Byg::Mutations::CreateComment do
       expect(errors[0]['message']).to include("Field 'createComment' is" \
         ' missing required arguments: userId, postId, text')
       expect(errors[1]['message']).to include("Field 'createComment' doesn't" \
-        " accept argument 'non_existent_arg'")
+        " accept argument 'nonExistentArg'")
     end
   end
 end
