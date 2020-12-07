@@ -6,7 +6,7 @@ module Byg
     class User < GraphQL::Schema::Object
       description 'User'
       require_relative 'blog_type'
-      field :id, ID, null: false
+      field :id, Integer, null: false
       field :name, String, null: false
       field :email, String, null: false
       field :karma, Integer, null: false

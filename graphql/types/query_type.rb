@@ -7,11 +7,11 @@ module Byg
       description 'the query root of a schema'
       field :user, User, null: true do
         description 'find a user by ID'
-        argument :id, ID, required: true
+        argument :id, Integer, required: true
       end
 
       def user(id:)
-        ::Byg::Models::User[id.to_i]
+        ::Byg::Models::User.with_pk!(id)
       end
     end
   end

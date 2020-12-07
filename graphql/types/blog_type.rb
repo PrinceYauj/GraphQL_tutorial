@@ -6,7 +6,7 @@ module Byg
     class Blog < GraphQL::Schema::Object
       description 'Blogs'
       require_relative 'post_type'
-      field :id, ID, null: false
+      field :id, Integer, null: false
       field :user, User, null: false
       field :name, String, null: false
       field :posts, [Post], null: true

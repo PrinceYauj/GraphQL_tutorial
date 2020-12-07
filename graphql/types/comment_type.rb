@@ -6,7 +6,7 @@ module Byg
     class Comment < GraphQL::Schema::Object
       description 'Comments'
       require_relative 'reaction_type'
-      field :id, ID, null: false
+      field :id, Integer, null: false
       field :post, Post, null: false
       field :user, User, null: false
       field :text, String, null: false

@@ -6,7 +6,7 @@ module Byg
     class Post < GraphQL::Schema::Object
       description 'Posts'
       require_relative 'comment_type'
-      field :id, ID, null: false
+      field :id, Integer, null: false
       field :blog, Blog, null: false
       field :text, String, null: false
       field :comments, [Comment], null: true
